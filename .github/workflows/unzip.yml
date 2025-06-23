@@ -1,0 +1,28 @@
+name: Unzip ChioriyaApp.zip
+
+on:
+  push:
+    paths:
+      - ChioriyaApp.zip
+  workflow_dispatch:  # ← untuk tombol manual "Run"
+
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Unzip the project
+        run: |
+          unzip ChioriyaApp.zip -d temp
+          mv temp/* .
+          rm -rf temp ChioriyaApp.zip
+
+      - name: Commit extracted files
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Auto-extracted ChioriyaApp.zip"
+          git push
