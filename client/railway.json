@@ -1,6 +1,8 @@
 {
   "buildCommand": "npm run build",
-  "installCommand": "npm install",
+  "installCommand": "npm install --omit=dev",
   "startCommand": "npm run start",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "healthcheckPath": "/",
+  "healthcheckTimeout": 30
 }
