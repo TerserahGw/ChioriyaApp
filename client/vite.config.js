@@ -13,19 +13,11 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, './index.html')
-      }
+      input: path.resolve(__dirname, './index.html')
     }
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8080',
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
+  preview: {
+    port: process.env.PORT || 5173,
+    strictPort: true
   }
 });
