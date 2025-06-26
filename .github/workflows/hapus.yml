@@ -1,0 +1,21 @@
+name: Hapus Folder client
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-client-folder:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Hapus folder client
+        run: |
+          rm -rf client
+          git config --global user.email "you@example.com"
+          git config --global user.name "your-username"
+          git add -A
+          git commit -m "Hapus folder client via GitHub Actions"
+          git push
