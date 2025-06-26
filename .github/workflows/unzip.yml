@@ -3,8 +3,8 @@ name: Unzip ChioriyaApp.zip
 on:
   push:
     paths:
-      - ChioriyaApp.zip
-  workflow_dispatch:  # ← untuk tombol manual "Run"
+      - client.zip
+  workflow_dispatch:
 
 jobs:
   unzip:
@@ -15,14 +15,14 @@ jobs:
 
       - name: Unzip the project
         run: |
-          unzip ChioriyaApp.zip -d temp
+          unzip client.zip -d temp
           mv temp/* .
-          rm -rf temp ChioriyaApp.zip
+          rm -rf temp client.zip
 
       - name: Commit extracted files
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add .
-          git commit -m "Auto-extracted ChioriyaApp.zip"
+          git commit -m "Auto-extracted client.zip"
           git push
