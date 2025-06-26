@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ChatContext = createContext();
+export const ChatContext = createContext();
 
 export function useChat() {
   return useContext(ChatContext);
